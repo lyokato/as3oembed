@@ -4,8 +4,10 @@ package org.coderepos.oembed
 
     public class OEmbedProviders
     {
-        public static const YOUTUBE = new OEmbedProvider(new URI("http://www.youtube.com/oembed"), new URI("http://www.youtube.com/watch"));
-        public static const FLICKR = new OEmbedProvider(new URI("http://www.flickr.com/services/oembed/"), new URI("http://*.flickr.com/*"));
+        public static const YOUTUBE:OEmbedProvider =
+            new OEmbedProvider(new URI("http://www.youtube.com/oembed"), new URI("http://www.youtube.com/watch"));
+        public static const FLICKR:OEmbedProvider =
+            new OEmbedProvider(new URI("http://www.flickr.com/services/oembed/"), new URI("http://*.flickr.com/*"));
     }
 }
 

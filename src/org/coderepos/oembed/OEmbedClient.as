@@ -27,12 +27,12 @@ package org.coderepos.oembed
 
         public function registerProvider(provider:OEmbedProvider):void
         {
-            _providerManager.registerProvider(provider):
+            _providerManager.registerProvider(provider);
         }
 
         public function matchURI(itemURI:URI):Boolean
         {
-            var provider:OEmbedprovider = _providerManager.findProviderByURI(itemURI);
+            var provider:OEmbedProvider = _providerManager.findProviderByURI(itemURI);
             return (provider != null);
         }
 
@@ -41,14 +41,14 @@ package org.coderepos.oembed
             if (_isFetching)
                 throw new Error("OEmbedClient is already fetching");
             clear();
-            var provider:OEmbedprovider = _providerManager.findProviderByURI(itemURI);
+            var provider:OEmbedProvider = _providerManager.findProviderByURI(itemURI);
             if (provider == null) {
                 var result:OEmbedEventResult = new OEmbedEventResult();
                 result.message = "Provider not found";
-                dispatchEvent(new OEmbedEvent(OEmbedEvent.PROVIDER_NOT_FOUND), result);
+                dispatchEvent(new OEmbedEvent(OEmbedEvent.PROVIDER_NOT_FOUND, result));
                 return;
             }
-            var r:URLRequest = buildRequest(provider, uri, option);
+            var r:URLRequest = buildRequest(provider, itemURI, option);
             _loader = new URLLoader();
             _loader.addEventListener(Event.COMPLETE, completeHandler);
             _loader.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
@@ -82,7 +82,7 @@ package org.coderepos.oembed
                 dispatchEvent(new OEmbedEvent(OEmbedEvent.COMPLETE, result));
             } catch (e:Error) {
                 result.message = e.toString();
-                dispatchEvent(new OEmbedEvent(OEmebedEvent.ERROR, result));
+                dispatchEvent(new OEmbedEvent(OEmbedEvent.ERROR, result));
                 return;
             }
         }
