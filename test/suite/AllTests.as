@@ -12,6 +12,7 @@ package suite {
       addTest( RequestURLBuilderTest.suite() );
       addTest( OEmbedJSONResponseParserTest.suite() );
       addTest( OEmbedXMLResponseParserTest.suite() );
+      addTest( OEmbedClient.suite() );
     }
   }
 }

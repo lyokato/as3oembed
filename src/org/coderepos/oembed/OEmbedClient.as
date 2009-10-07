@@ -43,7 +43,9 @@ package org.coderepos.oembed
             clear();
             var provider:OEmbedprovider = _providerManager.findProviderByURI(itemURI);
             if (provider == null) {
-                dispatchEvent(new OEmbedEvent(OEmbedEvent.PROVIDER_NOT_FOUND));
+                var result:OEmbedEventResult = new OEmbedEventResult();
+                result.message = "Provider not found";
+                dispatchEvent(new OEmbedEvent(OEmbedEvent.PROVIDER_NOT_FOUND), result);
                 return;
             }
             var r:URLRequest = buildRequest(provider, uri, option);
@@ -74,12 +76,13 @@ package org.coderepos.oembed
         {
             _isFetching = false;
             var parser:IOEmbedResponseParser = OEmbedFormat.getResponseParserForFormat(_lastRequestFormat);
-            var response:OEmbedResponse;
+            var result:OEmbedEventResult = new OEmbedEventResult();
             try {
-                response = parser.parse(e.target.data as String);
-                dispatchEvent(new OEmbedEvent(OEmbedEvent.COMPLETE, response));
+                result.data = parser.parse(e.target.data as String);
+                dispatchEvent(new OEmbedEvent(OEmbedEvent.COMPLETE, result));
             } catch (e:Error) {
-                dispatchEvent(new OEmbedEvent(OEmebedEvent.RESPONSE_PARSE_ERROR));
+                result.message = e.toString();
+                dispatchEvent(new OEmbedEvent(OEmebedEvent.ERROR, result));
                 return;
             }
         }
