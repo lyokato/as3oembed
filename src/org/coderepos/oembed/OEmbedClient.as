@@ -30,6 +30,12 @@ package org.coderepos.oembed
             _providerManager.registerProvider(provider):
         }
 
+        public function matchURI(itemURI:URI):Boolean
+        {
+            var provider:OEmbedprovider = _providerManager.findProviderByURI(itemURI);
+            return (provider != null);
+        }
+
         public function get(itemURI:URI, option:OEmbedRequestOption=null):void
         {
             if (_isFetching)
@@ -70,7 +76,7 @@ package org.coderepos.oembed
             var parser:IOEmbedResponseParser = OEmbedFormat.getResponseParserForFormat(_lastRequestFormat);
             var response:OEmbedResponse;
             try {
-                response = parser.parse(e.target.data);
+                response = parser.parse(e.target.data as String);
                 dispatchEvent(new OEmbedEvent(OEmbedEvent.COMPLETE, response));
             } catch (e:Error) {
                 dispatchEvent(new OEmbedEvent(OEmebedEvent.RESPONSE_PARSE_ERROR));

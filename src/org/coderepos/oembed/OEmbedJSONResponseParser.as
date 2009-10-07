@@ -10,16 +10,16 @@ package org.coderepos.oembed
 
         }
 
-        public function parse(data:*):OEmbedResponse
+        public function parse(data:String):OEmbedResponse
         {
-            if (!(data is String))
-                throw new Error("for JSON Parser, response data should be TEXT format");
             var res:OEmbedResponse = new OEmbedResponse();
             var obj:Object = JSON.decode(String(data));
             if (obj == null)
                 throw new Error("Invalid JSON format string");
             if (obj.type)
                 res.type = obj.type;
+            if (obj.version)
+                res.version = obj.version;
             if (obj.title)
                 res.title = obj.title;
             if (obj.author_name)

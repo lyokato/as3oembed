@@ -11,6 +11,7 @@ package suite {
       addTest( OEmbedProviderManagerTest.suite() );
       addTest( RequestURLBuilderTest.suite() );
       addTest( OEmbedJSONResponseParserTest.suite() );
+      addTest( OEmbedXMLResponseParserTest.suite() );
     }
   }
 }
