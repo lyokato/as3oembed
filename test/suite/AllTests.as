@@ -1,9 +1,6 @@
 package suite {
-  
-  import flexunit.framework.TestSuite;  
-  
+  import flexunit.framework.TestSuite;
   public class AllTests extends TestSuite {
-    
     public function AllTests() {
       super();
       // Add tests here
@@ -13,8 +10,7 @@ package suite {
       addTest( OEmbedProviderTest.suite() );
       addTest( OEmbedProviderManagerTest.suite() );
       addTest( RequestURLBuilderTest.suite() );
+      addTest( OEmbedJSONResponseParserTest.suite() );
     }
-    
   }
-  
 }
