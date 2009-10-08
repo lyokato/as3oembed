@@ -7,6 +7,7 @@ package suite {
       // For examples, see: http://code.google.com/p/as3flexunitlib/wiki/Resources
       //addTest(SomeTest.suite());
       addTest( URLRegExpCompilerTest.suite() );
+      addTest( URIFinderTest.suite() );
       addTest( OEmbedProviderTest.suite() );
       addTest( OEmbedProviderManagerTest.suite() );
       addTest( RequestURLBuilderTest.suite() );
