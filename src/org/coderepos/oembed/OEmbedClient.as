@@ -1,3 +1,15 @@
+/*
+Copyright (c) Lyo Kato (lyo.kato _at_ gmail.com)
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+*/
+
 package org.coderepos.oembed
 {
     import flash.events.EventDispatcher;
@@ -8,6 +20,55 @@ package org.coderepos.oembed
     import flash.events.IOErrorEvent;
     import flash.events.SecurityErrorEvent;
     import com.adobe.net.URI;
+
+    /**
+    * oEmbed consumer agent class
+    *
+    * @example
+    * <listing version="3.0">
+    *
+    * import org.coderepos.oembed.OEmbedClient;
+    * import org.coderepos.oembed.OEmbedEvent;
+    * import org.coderepos.oembed.OEmbedProviders;
+    * import org.coderepos.oembed.OEmbedProvider;
+    * import org.coderepos.oembed.OEmbedResponse;
+    * import flash.events.SecurityErrorEvent;
+    * import flash.events.IOErrorEvent;
+    * import com.adobe.net.URI;
+    *
+    * var client:OEmbedClient = new OEmbedClient();
+    * // setup
+    * client.registerProvider( OEmbedProviders.YOUTUBE );
+    * client.registerProvider( OEmbedProviders.FLICKR );
+    * // or build provider by yourself
+    * client.registerProvider( new OEmbedProvider(...) );
+    *
+    * // setup listeners
+    * client.addEventListener( OEmbedEvent.COMPLETE, completeHandler );
+    * client.addEventListener( OEmbedEvent.ERROR, errorHandler );
+    * client.addEventListener( SecurityErrorEvent.SECURITY_ERROR, securityErrorHandler );
+    * client.addEventListener( IOErrorEvent.IO_ERROR, securityErrorHandler );
+    *
+    * var itemURI:URI = new URI("http://www.youtube.com/watch?v=FOOBAR");
+    * if (client.matchURI(itemURI)) {
+    *   client.get(itemURI);
+    *
+    *  // or you can set option
+    *  // var option:OEmbedRequestOption = new OEmbedRequestOption();
+    *  // option.format = OEmbedFormat.XML; or you can set OEmbedFormat.JSON
+    *  // option.maxheight = 300;
+    *  // option.maxwidth  = 100;
+    *  // client.get(itemURI, option);
+    *
+    * private function completeHandler(e:OEmbedEvent):void {
+    *   var res:OEmbedResponse = e.result.data as OEmbedResponse; 
+    *   res.version;
+    *   res.type;
+    *   res.width;
+    *   // ... see OEmbedResponse document for more detail
+    * }
+    * </listing>
+    */
 
     public class OEmbedClient extends EventDispatcher
     {
