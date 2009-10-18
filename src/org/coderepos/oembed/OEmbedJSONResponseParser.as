@@ -25,7 +25,7 @@ package org.coderepos.oembed
         public function parse(data:String):OEmbedResponse
         {
             var res:OEmbedResponse = new OEmbedResponse();
-            var obj:Object = JSON.decode(String(data));
+            var obj:Object = JSON.decode(data);
             if (obj == null)
                 throw new Error("Invalid JSON format string");
             if (obj.type)

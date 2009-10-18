@@ -22,7 +22,8 @@ package org.coderepos.oembed
 
         private var _result:OEmbedEventResult;
 
-        public function OEmbedEvent(type:String, result:OEmbedEventResult, bubbles:Boolean=false, cancelable:Boolean=false)
+        public function OEmbedEvent(type:String, result:OEmbedEventResult,
+            bubbles:Boolean=false, cancelable:Boolean=false)
         {
             super(type, bubbles, cancelable);
             _result = result;

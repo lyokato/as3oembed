@@ -47,10 +47,10 @@ package org.coderepos.oembed
     * client.addEventListener( OEmbedEvent.COMPLETE, completeHandler );
     * client.addEventListener( OEmbedEvent.ERROR, errorHandler );
     * client.addEventListener( SecurityErrorEvent.SECURITY_ERROR, securityErrorHandler );
-    * client.addEventListener( IOErrorEvent.IO_ERROR, securityErrorHandler );
+    * client.addEventListener( IOErrorEvent.IO_ERROR, ioErrorHandler );
     *
     * var itemURI:URI = new URI("http://www.youtube.com/watch?v=FOOBAR");
-    * if (client.matchURI(itemURI)) {
+    * if (client.matchURI(itemURI))
     *   client.get(itemURI);
     *
     *  // or you can set option
@@ -61,7 +61,7 @@ package org.coderepos.oembed
     *  // client.get(itemURI, option);
     *
     * private function completeHandler(e:OEmbedEvent):void {
-    *   var res:OEmbedResponse = e.result.data as OEmbedResponse; 
+    *   var res:OEmbedResponse = e.result.data as OEmbedResponse;
     *   res.version;
     *   res.type;
     *   res.width;
@@ -131,6 +131,7 @@ package org.coderepos.oembed
         public function clear():void
         {
             _lastRequestFormat = null;
+            _loader = null;
         }
 
         private function completeHandler(e:Event):void

@@ -3,8 +3,8 @@ package suite
     import flexunit.framework.TestCase;
     import flexunit.framework.TestSuite;
 
-    import org.coderepos.oembed.URIFinder;
-    import org.coderepos.oembed.URIFinderElem;
+    import org.coderepos.text.URIFinder;
+    import org.coderepos.text.URIFinderElem;
     import com.adobe.net.URI;
 
     public class URIFinderTest extends TestCase {
