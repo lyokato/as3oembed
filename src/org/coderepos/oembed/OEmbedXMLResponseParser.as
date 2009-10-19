@@ -24,6 +24,7 @@ package org.coderepos.oembed
         public function parse(data:String):OEmbedResponse
         {
             var res:OEmbedResponse = new OEmbedResponse();
+            res.src = data;
             var resXML:XML = new XML(data);
             if (resXML.type.length() > 0)
                 res.type = resXML.type.toString();

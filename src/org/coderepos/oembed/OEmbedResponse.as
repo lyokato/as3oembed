@@ -39,6 +39,9 @@ package org.coderepos.oembed
         public var width:uint;
         public var height:uint;
 
+        // originnal source
+        public var src:String;
+
         public function OEmbedResponse()
         {
 

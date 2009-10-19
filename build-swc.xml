@@ -1,0 +1,46 @@
+<!--
+ To build as3oauth.swc, use
+
+   compc -load-config=build-swc.xml
+   acompc -load-config=build-swc.xml
+
+ That is all.
+-->
+<flex-config>
+  <compiler>
+    <external-library-path>
+      <path-element>${flexlib}/libs/player/9/playerglobal.swc</path-element>
+      <path-element>lib/corelib-20070830.swc</path-element>
+    </external-library-path>
+    
+    <source-path>
+      <path-element>src</path-element>
+    </source-path>
+  </compiler>
+  <include-classes>
+      <class>org.coderepos.oembed.IOEmbedResponseParser</class>
+      <class>org.coderepos.oembed.OEmbedClient</class>
+      <class>org.coderepos.oembed.OEmbedEvent</class>
+      <class>org.coderepos.oembed.OEmbedEventResult</class>
+      <class>org.coderepos.oembed.OEmbedFormat</class>
+      <class>org.coderepos.oembed.OEmbedJSONResponseParser</class>
+      <class>org.coderepos.oembed.OEmbedProvider</class>
+      <class>org.coderepos.oembed.OEmbedProviderManager</class>
+      <class>org.coderepos.oembed.OEmbedProviders</class>
+      <class>org.coderepos.oembed.OEmbedRequestOption</class>
+      <class>org.coderepos.oembed.OEmbedResponse</class>
+      <class>org.coderepos.oembed.OEmbedResponseType</class>
+      <class>org.coderepos.oembed.OEmbedXMLResponseParser</class>
+      <class>org.coderepos.oembed.RequestURLBuilder</class>
+      <class>org.coderepos.oembed.URLRegExpCompiler</class>
+      <class>org.coderepos.text.URIFinder</class>
+      <class>org.coderepos.text.URIFinderElem</class>
+  </include-classes>
+  <metadata>
+    <creator>Lyo Kato</creator>
+    <description>http://github.com/lyokato/as3oembed.git</description>
+    <language>EN</language>
+    <title>AS3 oEmbed Client Library</title>
+  </metadata>
+  <output>bin/as3oembed-1_0_0.swc</output>
+</flex-config>

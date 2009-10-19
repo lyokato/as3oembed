@@ -25,38 +25,39 @@ package org.coderepos.oembed
         public function parse(data:String):OEmbedResponse
         {
             var res:OEmbedResponse = new OEmbedResponse();
+            res.src = data;
             var obj:Object = JSON.decode(data);
             if (obj == null)
                 throw new Error("Invalid JSON format string");
-            if (obj.type)
+            if ("type" in obj)
                 res.type = obj.type;
-            if (obj.version)
+            if ("version" in obj)
                 res.version = obj.version;
-            if (obj.title)
+            if ("title" in obj)
                 res.title = obj.title;
-            if (obj.author_name)
+            if ("author_name" in obj)
                 res.authorName = obj.author_name;
-            if (obj.author_url)
+            if ("author_url" in obj)
                 res.authorURL = new URI(obj.author_url);
-            if (obj.provider_name)
+            if ("provider_name" in obj)
                 res.providerName = obj.provider_name;
-            if (obj.provider_url)
+            if ("provider_url" in obj)
                 res.providerURL = new URI(obj.provider_url);
-            if (obj.cache_age)
+            if ("cache_age" in obj)
                 res.cacheAge = uint(obj.cache_age);
-            if (obj.thumbnail_url)
+            if ("thumbnail_url" in obj)
                 res.thumbnailURL = new URI(obj.thumbnail_url);
-            if (obj.thumbnail_height)
+            if ("thumbnail_height" in obj)
                 res.thumbnailHeight = uint(obj.thumbnail_height);
-            if (obj.thumbnail_width)
+            if ("thumbnail_width" in obj)
                 res.thumbnailWidth = uint(obj.thumbnail_width);
-            if (obj.url)
+            if ("url" in obj)
                 res.url = new URI(obj.url);
-            if (obj.html)
+            if ("html" in obj)
                 res.html = obj.html;
-            if (obj.width)
+            if ("width" in obj)
                 res.width = uint(obj.width);
-            if (obj.height)
+            if ("height" in obj)
                 res.height = uint(obj.height);
             return res;
         }
