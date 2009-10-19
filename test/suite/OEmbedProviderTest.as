@@ -19,13 +19,19 @@ package suite
         }
 
         public function testMatchURI():void {
-            var flickr:OEmbedProvider = new OEmbedProvider(new URI("http://www.flickr.com/oembed"), new URI("http://*.flickr.com/*"));
-            assertTrue(flickr.matchURI(new URI("http://hoge.flickr.com/hoge")));
-            assertFalse(flickr.matchURI(new URI("http://hoge.youtube.com/hoge")));
+            var flickr:OEmbedProvider = new OEmbedProvider(
+                new URI("http://www.flickr.com/oembed"),
+                Vector.<URI>([new URI("http://*.flickr.com/*")])
+            );
+            assertTrue("check flickr valid url", flickr.matchURI(new URI("http://hoge.flickr.com/hoge")));
+            assertFalse("check flickr invalid url", flickr.matchURI(new URI("http://hoge.youtube.com/hoge")));
 
-            var youtube:OEmbedProvider = new OEmbedProvider(new URI("http://www.youtube.com/oembed"), new URI("http://www.youtube.com/watch"));
-            assertTrue(youtube.matchURI(new URI("http://www.youtube.com/watch?v=HOGE")));
-            assertFalse(youtube.matchURI(new URI("http://www.flickr.com/watch?v=HOGE")));
+            var youtube:OEmbedProvider = new OEmbedProvider(
+                new URI("http://www.youtube.com/oembed"),
+                Vector.<URI>([new URI("http://www.youtube.com/watch")])
+            );
+            assertTrue("check youtube valid url", youtube.matchURI(new URI("http://www.youtube.com/watch?v=HOGE")));
+            assertFalse("check youtube invalid url", youtube.matchURI(new URI("http://www.flickr.com/watch?v=HOGE")));
         }
 
     }

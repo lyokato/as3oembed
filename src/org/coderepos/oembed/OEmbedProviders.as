@@ -19,12 +19,30 @@ package org.coderepos.oembed
         public static const YOUTUBE:OEmbedProvider =
             new OEmbedProvider(
                 new URI("http://www.youtube.com/oembed"),
-                new URI("http://www.youtube.com/watch"));
+                Vector.<URI>([new URI("http://www.youtube.com/watch")])
+            );
 
         public static const FLICKR:OEmbedProvider =
             new OEmbedProvider(
                 new URI("http://www.flickr.com/services/oembed/"),
-                new URI("http://*.flickr.com/*"));
+                Vector.<URI>([new URI("http://*.flickr.com/*")])
+            );
+
+        public static const HULU:OEmbedProvider =
+            new OEmbedProvider(
+                new URI("http://www.hulu.com/api/oembed.{format}"),
+                Vector.<URI>([new URI("http://www.hulu.com/watch/*")])
+            );
+
+        public static const OOHEMBED:OEmbedProvider =
+            new OEmbedProvider(
+                new URI("http://www.oohembed.com/oohembed/"),
+                Vector.<URI>([
+                    new URI("http://video.google.com/videoplay?*"),
+                    new URI("http://*.twitpic.com/*"),
+                    new URI("http://*.slideshare.net/*"),
+                    new URI("http://*.amazon.(com|co.uk|de|ca|jp)/*/(gp/product|o/ASIN|obidos/ASIN|dp)/*")])
+                );
     }
 }
 

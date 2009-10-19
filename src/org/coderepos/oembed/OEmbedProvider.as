@@ -16,15 +16,16 @@ package org.coderepos.oembed
 
     public class OEmbedProvider
     {
-        private var _uriRegExp:RegExp;
         private var _apiEndpoint:URI;
-        private var _schemeURI:URI;
+        private var _uriRegExpList:Vector.<RegExp>;
 
-        public function OEmbedProvider(apiEndpoint:URI, schemeURI:URI)
+        public function OEmbedProvider(apiEndpoint:URI, schemeURIs:Vector.<URI>)
         {
             _apiEndpoint = apiEndpoint;
-            _schemeURI = schemeURI;
-            _uriRegExp = URLRegExpCompiler.compile(schemeURI);
+            _uriRegExpList = new Vector.<RegExp>();
+            for each(var schemeURI:URI in schemeURIs) {
+               _uriRegExpList.push(URLRegExpCompiler.compile(schemeURI));
+            }
         }
 
 
@@ -35,9 +36,13 @@ package org.coderepos.oembed
 
         public function matchURI(uri:URI):Boolean
         {
-            return _uriRegExp.test(uri.toString());
+            var urlString:String = uri.toString();
+            for each(var regExp:RegExp in _uriRegExpList) {
+                if (regExp.test(urlString))
+                    return true;
+            }
+            return false;
         }
-
     }
 }
 

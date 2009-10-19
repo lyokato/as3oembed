@@ -20,8 +20,14 @@ package suite
         }
 
         public function testManager():void {
-            var flickr:OEmbedProvider = new OEmbedProvider(new URI("http://www.flickr.com/oembed"), new URI("http://*.flickr.com/*"));
-            var youtube:OEmbedProvider = new OEmbedProvider(new URI("http://www.youtube.com/oembed"), new URI("http://www.youtube.com/watch"));
+            var flickr:OEmbedProvider = new OEmbedProvider(
+                new URI("http://www.flickr.com/oembed"),
+                Vector.<URI>([new URI("http://*.flickr.com/*")])
+            );
+            var youtube:OEmbedProvider = new OEmbedProvider(
+                new URI("http://www.youtube.com/oembed"),
+                Vector.<URI>([new URI("http://www.youtube.com/watch")])
+            );
 
             var manager:OEmbedProviderManager = new OEmbedProviderManager();
             manager.registerProvider(flickr);
