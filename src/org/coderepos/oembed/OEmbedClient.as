@@ -169,7 +169,7 @@ package org.coderepos.oembed
 
             var url:String = RequestURLBuilder.build(provider.apiEndpoint, itemURI, option);
             var req:URLRequest = new URLRequest(url);
-            req.manageCookies = false;
+            //req.manageCookies = false;
             var contentType:String = OEmbedFormat.getContentTypeForFormat(option.format);
             req.requestHeaders.push(new URLRequestHeader("Accept", contentType));
             return req;
